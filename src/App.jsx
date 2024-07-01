@@ -7,15 +7,17 @@ import Users from "./pages/Users";
 
 import { Toaster } from "sonner";
 import Dashboard from "./pages/Dashboard";
+import Sidebar from "./components/Sidebar";
+import { useSelector } from "react-redux";
 
 function Layout() {
-  const user = "";
+  const { user } = useSelector((state) => state.auth);
   const location = useLocation();
 
-  return user ? (
+  return !user ? (
     <div className="w-full h-screen flex flex-col md:flex-row">
       <div className="w-1/5 h-screen bg-white sticky top-0 hidden md:block">
-        {/* {<Sidebar/>} */}
+        {<Sidebar />}
       </div>
       {/* {<MobileSidebar/>} */}
       <div className="flex-1 overflow-y-auto">{/* <Navbar /> */}</div>

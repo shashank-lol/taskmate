@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Textbox from "../components/Textbox";
 import Button from "../components/Button";
+import { useSelector } from "react-redux";
 
 function Login() {
-  const user = "";
+  const { user } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -18,6 +19,7 @@ function Login() {
 
   const navigate = useNavigate();
 
+  console.log(user);
   useEffect(() => {
     user && navigate("/dashboard");
   }, [user]);
@@ -83,6 +85,12 @@ function Login() {
                 label="Submit"
                 className="w-full h-10 bg-blue-700 text-white"
               />
+              <div className="text-center text-sm text-gray-500">
+                <span>New to TaskMate? </span>
+                <span className="hover:text-blue-600 hover:underline cursor-pointer">
+                  Sign up
+                </span>
+              </div>
             </div>
           </form>
         </div>
